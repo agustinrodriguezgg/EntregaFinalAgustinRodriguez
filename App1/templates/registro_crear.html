@@ -2,15 +2,13 @@
 
 {% load static %}
 
- 
-
 {% block contenido %}
 
-    <h2>Ingrese sus datos</h2>
-    <form action="">
+    <h2>Nuevo Usuario</h2>
+    <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button>Enviar</button>
+        <button>Registrar</button>
     </form>
 
-{% endblock %}
+{% endblock %}
