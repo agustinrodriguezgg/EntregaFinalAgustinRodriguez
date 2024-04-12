@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, authenticate
 #Import App1
 from App1.models import Curso,Profesor, Alumno
 from App1.forms import Curso_fomulario, Profesor_formulario, Alumno_formulario

@@ -3,8 +3,9 @@ from . import views
 
 urlpatterns = [
     #HOME
-    path("inicio",views.inicio),
-    path("login", views.login_request , name="Login"),
+    path("",views.inicio,name="inicio"),
+    path("login", views.login_request , name="login"),
+
 
     #CURSOS
     path("curso_alta", views.curso_formulario),
@@ -21,6 +22,7 @@ urlpatterns = [
     path("profesor_resultado",views.profesor_resultado),
     path("profesor_eliminar/<int:id>", views.profesor_eliminar, name="profesor_eliminar"),
     path("profesor_editar/<int:id>", views.profesor_editar,name="profesor_editar"),
+
 
     #ALUMNOS
     path("alumnos",views.alumnos_ver),
