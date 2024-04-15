@@ -29,6 +29,15 @@ def login_request(request):
     form = AuthenticationForm()
     return render( request , "login.html" ,{"form":form})
 
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponse("Usuario creado")
+    else:
+        form = UserCreationForm()
+    return render(request , "registro.html" , {"form":form})
 
 #CURSOS
 

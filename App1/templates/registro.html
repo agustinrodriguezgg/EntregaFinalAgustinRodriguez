@@ -1,0 +1,48 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block contenido %}
+    <head>
+    <link rel="icon" type="image/x-icon" href="App1/assets/favicon.ico">
+    </head>
+        <header class="masthead">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <!-- Page heading-->
+                            <h1 class="mb-5">Bienvenidos a una pagina ABM</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </header>
+
+    <body>
+        <div class="container">
+            <div class="text-center text-black">
+                <div class="card">
+                        <div class="card-header">
+                            <h2>Nuevo Usuario</h2>
+                        </div>
+                        <div class="card-body">
+                        <p></p>
+                        <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="text-center">
+                            <div class="col-10">
+                                <div container class="form-control">
+                                {{ form.as_ul }}
+                        </div>
+                        </div>
+                        </div>
+                        <button class="btn btn-primary">Registrar</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+    </body>
+        
+{% endblock %}
