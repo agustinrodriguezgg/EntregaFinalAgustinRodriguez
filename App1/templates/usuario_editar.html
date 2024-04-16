@@ -1,0 +1,23 @@
+{% extends "padre.html" %}
+{% load static %}
+
+{% block contenido %}
+    <header class="masthead" >
+        <div class= "container" style="color:black; opacity: 100">
+            <h1 class="text-center">Editor de usuarios</h1>
+            <p></p>
+            <p></p>
+            <h5 class="text-center">Alumnos</h5>
+        </div>
+    </header>
+
+    <h2>Editar Perfil {{usuario}}</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{mi_formulario.as_table}}
+        </table>
+        <button>Enviar</button>
+    </form>
+
+{% endblock %}
