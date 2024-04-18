@@ -37,6 +37,10 @@
                 <div class="btn-group">
                     <a type="btn" class="btn btn-primary " href="{% url 'Register' %}">Registrarse</a>
                     <a type="btn" class="btn btn-primary me-md-0" href="{% url 'login' %}">Ingresar</a>
+                    <form method="post" action="{% url 'Logout' %}">
+                        {% csrf_token %}
+                        <button href="{% url 'Logout' %}" class="btn btn-danger">Logout</button>
+                    </form>
                 </div>
                 </div>
             </div>

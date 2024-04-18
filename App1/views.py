@@ -39,22 +39,20 @@ def register(request):
         form = UserCreationForm()
     return render(request , "registro.html" , {"form":form})
 
-def usuario_editar(request):
+def editar_perfil(request):
     usuario = request.user
     if request.method == "POST":
-        miFormulario = UserEditForm(request.POST)
-        if miFormulario.is_valid():
-            informacion = miFormulario.cleaned_data
+        mi_formulario = UserEditForm(request.POST)
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
             usuario.email = informacion["email"]
             password = informacion["password1"]
             usuario.set_password(password)
             usuario.save()
-            return render(request, "inicio.html")
-        pass
+            return render(request , "inicio.html",{"mensaje":f"Usuario editado Correctamente"} )
     else:
-        mi_formulario = UserEditForm(initial={'email':usuario.email})
-    return render( request , "usuario_editar.html", {"mi_formulario":mi_formulario, "usuario":usuario})
-
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+    return render( request , "editar_perfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 #CURSOS
 
 def curso_formulario(request):
