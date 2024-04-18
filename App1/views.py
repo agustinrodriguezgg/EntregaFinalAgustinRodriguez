@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, authenticate
 #Import App1
 from App1.models import Curso,Profesor, Alumno
-from App1.forms import Curso_fomulario, Profesor_formulario, Alumno_formulario
+from App1.forms import Curso_fomulario, Profesor_formulario, Alumno_formulario, UserEditForm
 
 # Create your views here.
 
@@ -39,6 +39,20 @@ def register(request):
         form = UserCreationForm()
     return render(request , "registro.html" , {"form":form})
 
+def editar_perfil(request):
+    usuario = request.user
+    if request.method == "POST":
+        mi_formulario = UserEditForm(request.POST)
+        if mi_formulario.is_valid():
+            informacion = mi_formulario.cleaned_data
+            usuario.email = informacion["email"]
+            password = informacion["password1"]
+            usuario.set_password(password)
+            usuario.save()
+            return render(request , "inicio.html",{"mensaje":f"Usuario editado Correctamente"} )
+    else:
+        miFormulario = UserEditForm(initial={'email':usuario.email})
+    return render( request , "editar_perfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 #CURSOS
 
 def curso_formulario(request):
