@@ -27,21 +27,27 @@
                             </button>
                             <ul class="dropdown-menu" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(0px, 40px);">
                                 <li><a class="dropdown-item" href="{% url 'inicio' %}">Inicio</a></li>
-                                <li><a class="dropdown-item" href="/App1/cursos">Cursos</a></li>
-                                <li><a class="dropdown-item" href="/App1/profesores">Profesores</a></li>
                                 <li><a class="dropdown-item" href="/App1/alumnos">Alumnos</a></li>
+                                <li><a class="dropdown-item" href="/App1/profesores">Profesores</a></li>
+                                <li><a class="dropdown-item" href="/App1/cursos">Cursos</a></li>
                             </ul>
                         </div>
                 </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <div class="btn-group">
-                    <a type="btn" class="btn btn-primary " href="{% url 'Register' %}">Registrarse</a>
-                    <a type="btn" class="btn btn-primary me-md-0" href="{% url 'login' %}">Ingresar</a>
-                    <form method="post" action="{% url 'Logout' %}">
-                        {% csrf_token %}
-                        <button href="{% url 'Logout' %}" class="btn btn-danger">Logout</button>
-                    </form>
+                <div class="content-center">
+                <p>Bienvenido!! {{user.username}}</p>
                 </div>
+                <div class="justify-content-md-end">
+                    <div class="btn-group">
+                        <a type="btn" class="btn btn-primary " href="{% url 'Register' %}">Registrarse</a>
+                        <a type="btn" class="btn btn-primary " href="{% url 'login' %}">Ingresar</a>
+                        <div class="container">
+                            <form method="POST" action="{% url 'Logout' %}">
+                                <button href="{% url 'Logout' %}"type="btn" class="btn btn-danger">Logout</button>
+                                {% csrf_token %}
+                                <img src="{{ url }}" alt="" width="50px" heigth="50px">
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>

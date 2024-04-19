@@ -9,3 +9,6 @@ admin.site.register(Profesor)
 
 
 admin.site.register(Alumno)
+
+
+admin.site.register(Avatar)
