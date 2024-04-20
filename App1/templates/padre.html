@@ -21,6 +21,8 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <div class="d-grid gap-2 d-md-block">
+                {% if request.user.is_authenticated %}
+                
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
                                 Navegacion
@@ -32,18 +34,21 @@
                                 <li><a class="dropdown-item" href="/App1/cursos">Cursos</a></li>
                             </ul>
                         </div>
+                {% endif %}
                 </div>
                 <div class="content-center">
                 <p>Bienvenido!! {{user.username}}</p>
                 </div>
                 <div class="justify-content-md-end">
-                    <div class="btn-group">
+                    <form method="POST" action="{% url 'Logout' %}">
+                    {% csrf_token %}
+                    <div class="btn-group" role="grp">
                         <a type="btn" class="btn btn-primary " href="{% url 'Register' %}">Registrarse</a>
                         <a type="btn" class="btn btn-primary " href="{% url 'login' %}">Ingresar</a>
+                        {% if request.user.is_authenticated %}
+                        <button href="{% url 'Logout' %}"type="btn" class="btn btn-danger">Logout</button>
                         <div class="container">
-                            <form method="POST" action="{% url 'Logout' %}">
-                                <button href="{% url 'Logout' %}"type="btn" class="btn btn-danger">Logout</button>
-                                {% csrf_token %}
+                        {% endif %}
                                 <img src="{{ url }}" alt="" width="50px" heigth="50px">
                             </form>
                         </div>

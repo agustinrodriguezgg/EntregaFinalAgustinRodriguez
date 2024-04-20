@@ -26,10 +26,12 @@
                         <th>{{n.id}}</th>
                         <th>{{n.nombre}}</th>
                         <th>{{n.dni}}</th>
+                        {% if request.user.is_authenticated %}
                         <td><a class="btn btn-danger btn-sm"href="{% url 'alumno_eliminar' n.id %}">X</a></td>
                         <td><a class="btn btn-danger btn-sm"href="{% url 'alumno_editar' n.id %}">Editar</a></td>
+                        {% endif %}
+                        {% endfor %}
                     </tr>
-                    {% endfor %}
                 </tbody>
             </table>
         </div>

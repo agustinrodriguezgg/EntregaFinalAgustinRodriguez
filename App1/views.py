@@ -11,7 +11,6 @@ from App1.forms import Curso_fomulario, Profesor_formulario, Alumno_formulario, 
 # Create your views here.
 
 def inicio(request):
-    avatares = Avatar.objects.filter(user=request.user.id)
     return render(request, "inicio.html")
 
 def login_request(request):
@@ -192,8 +191,8 @@ def alumno_formulario(request):
             datos = mi_formulario.cleaned_data
             alumno = Alumno(nombre=request.POST["nombre"], dni=request.POST["dni"])
             alumno.save()
-            return render(request , "alumno_formulario.html",{"profesor":profesor,"url":avatares[0].imagen.url})
-    return render(request , "alumno_formulario.html",{"profesor":profesor,"url":avatares[0].imagen.url})
+            return render(request , "alumno_formulario.html",{"url":avatares[0].imagen.url})
+    return render(request , "alumno_formulario.html",{"url":avatares[0].imagen.url})
 
 
 def alumnos_ver(request):
@@ -217,12 +216,13 @@ def alumno_resultado(request):
         avatares = Avatar.objects.filter(user=request.user.id)
         return render(request,"alumno_buscar_error.html",{"url":avatares[0].imagen.url})
 
+ 
 def alumno_eliminar(request, id):
     avatares = Avatar.objects.filter(user=request.user.id)
     alumno = Alumno.objects.get(id=id)
     alumno.delete()
     alumnos = Alumno.objects.all()
-    return render (request, "alumnos.html", {"alumnos":alumnos,"url":avatares[0].imagen.ur})
+    return render (request, "alumnos.html", {"alumnos":alumnos,"url":avatares[0].imagen.url})
 
 def alumno_editar(request, id):
     avatares = Avatar.objects.filter(user=request.user.id)
